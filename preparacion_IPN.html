@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de Clases - IPN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CALENDARIO DE CLASES</h1>
+            <div style="font-size: 1.2rem; margin-top: 10px; position: relative; z-index: 2;">TRANSMISIONES</div>
+        </div>
+
+        <div class="period">
+            <div class="period-title">Del 12 de Julio al 15 de Agosto</div>
+            <div class="schedule-grid">
+                <div class="day-header sabado">SÁBADO</div>
+                <div class="day-header domingo">DOMINGO</div>
+                <div class="day-header lunes">LUNES</div>
+                <div class="day-header martes">MARTES</div>
+                <div class="day-header miercoles">MIÉRCOLES</div>
+                <div class="day-header jueves">JUEVES</div>
+                <div class="day-header viernes">VIERNES</div>
+
+                <!-- Fin de Semana (Sábado-Domingo) -->
+                <div class="class-slot" style="grid-column: span 2;">
+                    <div class="class-item quimica" onclick="openModal('Química', 'quimica')">
+                        <div class="time-label">3:30 PM - 6:00 PM</div>
+                        <div>Química</div>
+                    </div>
+                    <div class="class-item aritmetica" onclick="openModal('Aritmética', 'aritmetica')">
+                        <div class="time-label">6:30 PM - 9:00 PM</div>
+                        <div>Aritmética</div>
+                    </div>
+                </div>
+                
+                <!-- Durante la Semana (Lunes-Viernes) -->
+                <div class="class-slot" style="grid-column: span 5;">
+                    <div class="class-item espanol" onclick="openModal('Español', 'espanol')">
+                        <div class="time-label">3:00 PM - 4:30 PM</div>
+                        <div>Español</div>
+                    </div>
+                    <div class="class-item fisica" onclick="openModal('Física', 'fisica')">
+                        <div class="time-label">5:00 PM - 6:30 PM</div>
+                        <div>Física</div>
+                    </div>
+                    <div class="class-item trigonometria" onclick="openModal('Trigonometría / Geometría', 'trigonometria')">
+                        <div class="time-label">7:00 PM - 8:30 PM</div>
+                        <div>Trigonometría / Geometría</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segundo Período -->
+        <div class="period">
+            <div class="period-title">Del 16 de Agosto al 19 de Septiembre</div>
+            <div class="schedule-grid">
+                <div class="day-header sabado">SÁBADO</div>
+                <div class="day-header domingo">DOMINGO</div>
+                <div class="day-header lunes">LUNES</div>
+                <div class="day-header martes">MARTES</div>
+                <div class="day-header miercoles">MIÉRCOLES</div>
+                <div class="day-header jueves">JUEVES</div>
+                <div class="day-header viernes">VIERNES</div>
+
+                <!-- Fin de Semana (Solo Sábados) -->
+                <div class="class-slot" style="grid-column: span 2;">
+                    <div class="class-item espanol" onclick="openModal('Español', 'espanol2')">
+                        <div class="time-label">9:00 AM - 11:30 AM</div>
+                        <div>Español</div>
+                    </div>
+                    <div class="class-item fisica" onclick="openModal('Física', 'fisica2')">
+                        <div class="time-label">12:00 PM - 2:30 PM</div>
+                        <div>Física</div>
+                    </div>
+                    <div class="class-item trigonometria" onclick="openModal('Trigonometría / Geometría', 'trigonometria2')">
+                        <div class="time-label">3:30 PM - 6:00 PM</div>
+                        <div>Trigonometría / Geometría</div>
+                    </div>
+                    <div class="class-item biologia" onclick="openModal('Biología', 'biologia')">
+                        <div class="time-label">6:30 PM - 9:00 PM</div>
+                        <div>Biología</div>
+                    </div>
+                </div>
+                
+                <!-- Durante la Semana (Lunes-Viernes) -->
+                <div class="class-slot" style="grid-column: span 5;">
+                    <div class="class-item historia" onclick="openModal('Historia / Inglés', 'historia')">
+                        <div class="time-label">1:00 PM - 2:30 PM</div>
+                        <div>Historia / Inglés</div>
+                    </div>
+                    <div class="class-item quimica" onclick="openModal('Química', 'quimica2')">
+                        <div class="time-label">3:00 PM - 4:30 PM</div>
+                        <div>Química</div>
+                    </div>
+                    <div class="class-item probabilidad" onclick="openModal('Probabilidad / Razonamiento matemático', 'probabilidad')">
+                        <div class="time-label">5:00 PM - 6:30 PM</div>
+                        <div>Probabilidad / Razonamiento matemático</div>
+                    </div>
+                    <div class="class-item calculo" onclick="openModal('Cálculo', 'calculo')">
+                        <div class="time-label">7:00 PM - 8:30 PM</div>
+                        <div>Cálculo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="classModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 id="modalTitle"></h2>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText"></div>
+            </div>
+            <div class="modal-body">
+                <ul class="class-list" id="classList"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script> 
+
+</body>
+</html>
