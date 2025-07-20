@@ -28,6 +28,31 @@
             localStorage.setItem('classProgress', JSON.stringify(progress));
         }
 
+        // Actualizar todas las barras de progreso
+        function updateAllProgressBars() {
+            const progress = loadProgress();
+            
+            Object.keys(classData).forEach(classKey => {
+                const completed = progress[classKey] ? progress[classKey].length : 0;
+                const total = classData[classKey].total;
+                const percentage = (completed / total) * 100;
+                
+                const progressBar = document.getElementById(`progress-${classKey}`);
+                const progressText = document.getElementById(`progress-text-${classKey}`);
+                const progressPercentage = document.getElementById(`progress-percentage-${classKey}`);
+                
+                if (progressBar) {
+                    progressBar.style.width = percentage + '%';
+                }
+                if (progressText) {
+                    progressText.textContent = `${completed} de ${total} clases`;
+                }
+                if (progressPercentage) {
+                    progressPercentage.textContent = Math.round(percentage) + '%';
+                }
+            });
+        }
+
         // Abrir modal
         function openModal(title, classKey) {
             const modal = document.getElementById('classModal');
@@ -93,9 +118,10 @@
             
             saveProgress(progress);
             updateProgress(classKey);
+            updateAllProgressBars(); // Actualizar todas las barras de progreso
         }
 
-        // Actualizar barra de progreso
+        // Actualizar barra de progreso del modal
         function updateProgress(classKey) {
             const progress = loadProgress();
             const completed = progress[classKey] ? progress[classKey].length : 0;
@@ -119,4 +145,9 @@
             if (event.key === 'Escape') {
                 closeModal();
             }
+        });
+
+        // Inicializar las barras de progreso al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAllProgressBars();
         });

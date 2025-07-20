@@ -1,3 +1,4 @@
+
         * {
             margin: 0;
             padding: 0;
@@ -157,6 +158,83 @@
             margin-bottom: 2px;
         }
 
+        /* Progress Section Styles */
+        .progress-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-section h3 {
+            text-align: center;
+            color: #4a90e2;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .progress-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--progress-color);
+        }
+
+        .progress-item.quimica-progress { --progress-color: #3f51b5; }
+        .progress-item.aritmetica-progress { --progress-color: #2196f3; }
+        .progress-item.espanol-progress { --progress-color: #f44336; }
+        .progress-item.fisica-progress { --progress-color: #3f51b5; }
+        .progress-item.trigonometria-progress { --progress-color: #4caf50; }
+        .progress-item.historia-progress { --progress-color: #ff9800; }
+        .progress-item.probabilidad-progress { --progress-color: #2196f3; }
+        .progress-item.biologia-progress { --progress-color: #4caf50; }
+        .progress-item.calculo-progress { --progress-color: #9c27b0; }
+
+        .progress-item h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .progress-bar-container {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 12px;
+            margin: 8px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--progress-color) 0%, var(--progress-color) 100%);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .progress-percentage {
+            font-weight: bold;
+            color: var(--progress-color);
+        }
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -304,5 +382,9 @@
             .modal-content {
                 width: 95%;
                 margin: 10% auto;
+            }
+
+            .progress-grid {
+                grid-template-columns: 1fr;
             }
         }
