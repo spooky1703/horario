@@ -7,10 +7,10 @@
             'trigonometria': { total: 25, color: '#4caf50', colorDark: '#388e3c' }, // Lun-Vie = 5 días x 5 semanas
             
             // Segundo período (5 semanas)
-            'espanol2': { total: 5, color: '#f44336', colorDark: '#d32f2f' }, // Solo sábados = 1 día x 5 semanas
-            'fisica2': { total: 5, color: '#3f51b5', colorDark: '#303f9f' }, // Solo sábados = 1 día x 5 semanas
-            'trigonometria2': { total: 5, color: '#4caf50', colorDark: '#388e3c' }, // Solo sábados = 1 día x 5 semanas
-            'biologia': { total: 5, color: '#4caf50', colorDark: '#388e3c' }, // Solo sábados = 1 día x 5 semanas
+            'espanol2': { total: 10, color: '#f44336', colorDark: '#d32f2f' }, // Solo sábados = 1 día x 5 semanas
+            'fisica2': { total: 10, color: '#3f51b5', colorDark: '#303f9f' }, // Solo sábados = 1 día x 5 semanas
+            'trigonometria2': { total: 10, color: '#4caf50', colorDark: '#388e3c' }, // Solo sábados = 1 día x 5 semanas
+            'biologia': { total: 10, color: '#4caf50', colorDark: '#388e3c' }, // Solo sábados = 1 día x 5 semanas
             'historia': { total: 25, color: '#ff9800', colorDark: '#f57c00' }, // Lun-Vie = 5 días x 5 semanas
             'quimica2': { total: 25, color: '#3f51b5', colorDark: '#303f9f' }, // Lun-Vie = 5 días x 5 semanas
             'probabilidad': { total: 25, color: '#2196f3', colorDark: '#1976d2' }, // Lun-Vie = 5 días x 5 semanas
