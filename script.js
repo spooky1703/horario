@@ -151,3 +151,193 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateAllProgressBars();
         });
+// Inicializar las barras de progreso al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    updateAllProgressBars();
+    loadTodos();
+    updateTodoStats();
+});
+
+// TO-DO LIST FUNCTIONALITY
+
+let todos = [];
+let currentFilter = 'all';
+let todoIdCounter = 1;
+
+// Cargar todos desde localStorage
+function loadTodos() {
+    const saved = localStorage.getItem('todos');
+    if (saved) {
+        todos = JSON.parse(saved);
+        // Actualizar contador para nuevos todos
+        todoIdCounter = todos.length > 0 ? Math.max(...todos.map(t => t.id)) + 1 : 1;
+    }
+    renderTodos();
+}
+
+// Guardar todos en localStorage
+function saveTodos() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+// Agregar nuevo todo
+function addTodo() {
+    const input = document.getElementById('todoInput');
+    const priority = document.getElementById('todoPriority');
+    const text = input.value.trim();
+
+    if (text === '') {
+        input.focus();
+        return;
+    }
+
+    const newTodo = {
+        id: todoIdCounter++,
+        text: text,
+        completed: false,
+        priority: priority.value,
+        createdAt: new Date().toISOString()
+    };
+
+    todos.unshift(newTodo); // Agregar al inicio
+    input.value = '';
+    priority.value = 'medium';
+    
+    saveTodos();
+    renderTodos();
+    updateTodoStats();
+}
+
+// Alternar estado completado
+function toggleTodo(id) {
+    const todo = todos.find(t => t.id === id);
+    if (todo) {
+        todo.completed = !todo.completed;
+        saveTodos();
+        renderTodos();
+        updateTodoStats();
+    }
+}
+
+// Eliminar todo
+function deleteTodo(id) {
+    const todoElement = document.querySelector(`[data-todo-id="${id}"]`);
+    if (todoElement) {
+        todoElement.classList.add('hiding');
+        setTimeout(() => {
+            todos = todos.filter(t => t.id !== id);
+            saveTodos();
+            renderTodos();
+            updateTodoStats();
+        }, 300);
+    }
+}
+
+// Filtrar todos
+function filterTodos(filter) {
+    currentFilter = filter;
+    
+    // Actualizar botones de filtro
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    renderTodos();
+}
+
+// Renderizar todos
+function renderTodos() {
+    const todoList = document.getElementById('todoList');
+    const emptyState = document.getElementById('emptyState');
+    
+    let filteredTodos = todos;
+    
+    // Aplicar filtros
+    switch (currentFilter) {
+        case 'pending':
+            filteredTodos = todos.filter(t => !t.completed);
+            break;
+        case 'completed':
+            filteredTodos = todos.filter(t => t.completed);
+            break;
+        case 'high':
+            filteredTodos = todos.filter(t => t.priority === 'high' && !t.completed);
+            break;
+    }
+
+    if (filteredTodos.length === 0) {
+        todoList.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+    }
+
+    todoList.style.display = 'block';
+    emptyState.style.display = 'none';
+
+    todoList.innerHTML = filteredTodos.map(todo => {
+        const date = new Date(todo.createdAt).toLocaleDateString('es-ES', {
+            day: 'numeric',
+            month: 'short'
+        });
+
+        const priorityText = {
+            'high': 'Alta',
+            'medium': 'Media',
+            'low': 'Baja'
+        };
+
+        return `
+            <li class="todo-item priority-${todo.priority} ${todo.completed ? 'completed' : ''}" data-todo-id="${todo.id}">
+                <input type="checkbox" class="todo-checkbox" 
+                       ${todo.completed ? 'checked' : ''} 
+                       onchange="toggleTodo(${todo.id})">
+                <div class="todo-content">
+                    <div class="todo-text">${escapeHtml(todo.text)}</div>
+                    <div class="todo-meta">
+                        <span class="priority-badge priority-${todo.priority}">
+                            ${priorityText[todo.priority]}
+                        </span>
+                        <span class="todo-date">${date}</span>
+                    </div>
+                </div>
+                <div class="todo-actions">
+                    <button class="todo-action-btn delete-btn" onclick="deleteTodo(${todo.id})" title="Eliminar">
+                        🗑️
+                    </button>
+                </div>
+            </li>
+        `;
+    }).join('');
+}
+
+// Actualizar estadísticas
+function updateTodoStats() {
+    const pending = todos.filter(t => !t.completed).length;
+    const completed = todos.filter(t => t.completed).length;
+    document.getElementById('todoStats').textContent = `${pending} pendientes, ${completed} completadas`;
+}
+
+// Escapar HTML para prevenir XSS
+function escapeHtml(text) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+// Permitir agregar con Enter
+document.addEventListener('DOMContentLoaded', function() {
+    const todoInput = document.getElementById('todoInput');
+    if (todoInput) {
+        todoInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTodo();
+            }
+        });
+    }
+});
