@@ -388,6 +388,51 @@
                 grid-template-columns: 1fr;
             }
         }
+    /* Estilos de las pestañas */
+.tabs-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+}
+
+.tab-button {
+    background: transparent;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tab-button:hover {
+    color: #4a90e2;
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.tab-button.active {
+    color: #4a90e2;
+    border-bottom-color: #4a90e2;
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
 
     /* To-Do List Styles */
     .todo-section {
