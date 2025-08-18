@@ -9,17 +9,18 @@
 </head>
 <body>
     <div class="container">
-            <div class="header">
-                <h1>CALENDARIO DE CLASES</h1>
-                <div style="font-size: 1.2rem; margin-top: 10px; position: relative; z-index: 2;">
-                    Si te gustó el website, sigueme en ig: 
-                    <a href="https://www.instagram.com/its.al0oo/" target="_blank" style="color: white; text-decoration: none; font-weight: bold; padding: 4px 8px; border-radius: 15px; background: rgba(255,255,255,0.2); transition: all 0.3s ease;" 
-                       onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='scale(1.05)'" 
-                       onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='scale(1)'">
-                       @its.al0oo
-                    </a>
-                </div>
-</div>      
+        <div class="header">
+            <h1>CALENDARIO DE CLASES</h1>
+            <div style="font-size: 1.2rem; margin-top: 10px; position: relative; z-index: 2;">
+                Si te gustó el website, sigueme en ig: 
+                <a href="https://www.instagram.com/its.al0oo/" target="_blank" style="color: white; text-decoration: none; font-weight: bold; padding: 4px 8px; border-radius: 15px; background: rgba(255,255,255,0.2); transition: all 0.3s ease;" 
+                   onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='scale(1.05)'" 
+                   onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='scale(1)'">
+                   @its.al0oo
+                </a>
+            </div>
+        </div>
+
         <!-- Sistema de Pestañas -->
         <div class="tabs-container">
             <div class="tabs">
@@ -345,22 +346,17 @@
     </div>
 
     <script>
-        // Función para cambiar pestañas
         function switchTab(tabId, buttonElement) {
-            // Ocultar todos los contenidos de pestañas
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
             
-            // Remover clase active de todos los botones
             document.querySelectorAll('.tab-button').forEach(button => {
                 button.classList.remove('active');
             });
             
-            // Mostrar el contenido seleccionado
             document.getElementById(tabId).classList.add('active');
             
-            // Activar el botón seleccionado
             buttonElement.classList.add('active');
         }
     </script>
