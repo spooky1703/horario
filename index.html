@@ -10,306 +10,316 @@
 <body>
     <div class="container">
         <div class="header">
-    <h1>CALENDARIO DE CLASES</h1>
-    <div style="font-size: 1.2rem; margin-top: 10px; position: relative; z-index: 2;">
-        Siganme en ig si les sirvió la pagina  
-        <a href="https://www.instagram.com/its.al0oo?igsh=MWQ2M2NqMW9wczA2bw%3D%3D&utm_source=qr" target="_blank" style="color: #E1306C; text-decoration: none;">
-            @its.al0oo
-        </a>
-    </div>
-</div>
+            <h1>CALENDARIO DE CLASES</h1>
+            <div style="font-size: 1.2rem; margin-top: 10px; position: relative; z-index: 2;">Si te gustó el website, sigueme en ig: @its.al0oo</div>
+        </div>
 
-        <div class="period">
-            <div class="period-title">Del 12 de Julio al 15 de Agosto</div>
-            <div class="schedule-grid">
-                <div class="day-header sabado">SÁBADO</div>
-                <div class="day-header domingo">DOMINGO</div>
-                <div class="day-header lunes">LUNES</div>
-                <div class="day-header martes">MARTES</div>
-                <div class="day-header miercoles">MIÉRCOLES</div>
-                <div class="day-header jueves">JUEVES</div>
-                <div class="day-header viernes">VIERNES</div>
-
-                <!-- Fin de Semana (Sábado-Domingo) -->
-                <div class="class-slot" style="grid-column: span 2;">
-                    <div class="class-item quimica" onclick="openModal('Química', 'quimica')">
-                        <div class="time-label">3:30 PM - 6:00 PM</div>
-                        <div>Química</div>
-                    </div>
-                    <div class="class-item aritmetica" onclick="openModal('Aritmética', 'aritmetica')">
-                        <div class="time-label">6:30 PM - 9:00 PM</div>
-                        <div>Aritmética/algebra</div>
-                    </div>
-                </div>
-                
-                <!-- Durante la Semana (Lunes-Viernes) -->
-                <div class="class-slot" style="grid-column: span 5;">
-                    <div class="class-item espanol" onclick="openModal('Español', 'espanol')">
-                        <div class="time-label">3:00 PM - 4:30 PM</div>
-                        <div>Español</div>
-                    </div>
-                    <div class="class-item fisica" onclick="openModal('Física', 'fisica')">
-                        <div class="time-label">5:00 PM - 6:30 PM</div>
-                        <div>Física</div>
-                    </div>
-                    <div class="class-item trigonometria" onclick="openModal('Trigonometría / Geometría', 'trigonometria')">
-                        <div class="time-label">7:00 PM - 8:30 PM</div>
-                        <div>Trigonometría / Geometría</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Progress Section for First Period -->
-            <div class="progress-section">
-                <h3>Progreso del Período (12 Jul - 15 Ago)</h3>
-                <div class="progress-grid">
-                    <div class="progress-item quimica-progress">
-                        <h4>Química</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-quimica" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progress-text-quimica">0 de 10 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-quimica">0%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="progress-item aritmetica-progress">
-                        <h4>Aritmética/Algebra</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-aritmetica" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progress-text-aritmetica">0 de 10 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-aritmetica">0%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="progress-item espanol-progress">
-                        <h4>Español</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-espanol" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progress-text-espanol">0 de 25 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-espanol">0%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="progress-item fisica-progress">
-                        <h4>Física</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-fisica" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progress-text-fisica">0 de 25 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-fisica">0%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="progress-item trigonometria-progress">
-                        <h4>Trigonometría / Geometría</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-trigonometria" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progress-text-trigonometria">0 de 25 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-trigonometria">0%</span>
-                        </div>
-                    </div>
-                </div>
+        <!-- Sistema de Pestañas -->
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('period1', this)">
+                    Primer Período (12 Jul - 15 Ago)
+                </button>
+                <button class="tab-button" onclick="switchTab('period2', this)">
+                    Segundo Período (16 Ago - 19 Sep)
+                </button>
             </div>
         </div>
 
-        <!-- Segundo Período -->
-        <div class="period">
-            <div class="period-title">Del 16 de Agosto al 19 de Septiembre</div>
-            <div class="schedule-grid">
-                <div class="day-header sabado">SÁBADO</div>
-                <div class="day-header domingo">DOMINGO</div>
-                <div class="day-header lunes">LUNES</div>
-                <div class="day-header martes">MARTES</div>
-                <div class="day-header miercoles">MIÉRCOLES</div>
-                <div class="day-header jueves">JUEVES</div>
-                <div class="day-header viernes">VIERNES</div>
+        <!-- Contenido del Primer Período -->
+        <div id="period1" class="tab-content active">
+            <div class="period">
+                <div class="period-title">Del 12 de Julio al 15 de Agosto</div>
+                <div class="schedule-grid">
+                    <div class="day-header sabado">SÁBADO</div>
+                    <div class="day-header domingo">DOMINGO</div>
+                    <div class="day-header lunes">LUNES</div>
+                    <div class="day-header martes">MARTES</div>
+                    <div class="day-header miercoles">MIÉRCOLES</div>
+                    <div class="day-header jueves">JUEVES</div>
+                    <div class="day-header viernes">VIERNES</div>
 
-                <!-- Fin de Semana (Solo Sábados) -->
-                <div class="class-slot" style="grid-column: span 2;">
-                    <div class="class-item espanol" onclick="openModal('Español', 'espanol2')">
-                        <div class="time-label">9:00 AM - 11:30 AM</div>
-                        <div>Español</div>
+                    <!-- Fin de Semana (Sábado-Domingo) -->
+                    <div class="class-slot" style="grid-column: span 2;">
+                        <div class="class-item quimica" onclick="openModal('Química', 'quimica')">
+                            <div class="time-label">3:30 PM - 6:00 PM</div>
+                            <div>Química</div>
+                        </div>
+                        <div class="class-item aritmetica" onclick="openModal('Aritmética', 'aritmetica')">
+                            <div class="time-label">6:30 PM - 9:00 PM</div>
+                            <div>Aritmética/algebra</div>
+                        </div>
                     </div>
-                    <div class="class-item fisica" onclick="openModal('Física', 'fisica2')">
-                        <div class="time-label">12:00 PM - 2:30 PM</div>
-                        <div>Física</div>
-                    </div>
-                    <div class="class-item trigonometria" onclick="openModal('Trigonometría / Geometría', 'trigonometria2')">
-                        <div class="time-label">3:30 PM - 6:00 PM</div>
-                        <div>Trigonometría / Geometría</div>
-                    </div>
-                    <div class="class-item biologia" onclick="openModal('Biología', 'biologia')">
-                        <div class="time-label">6:30 PM - 9:00 PM</div>
-                        <div>Biología</div>
+                    
+                    <!-- Durante la Semana (Lunes-Viernes) -->
+                    <div class="class-slot" style="grid-column: span 5;">
+                        <div class="class-item espanol" onclick="openModal('Español', 'espanol')">
+                            <div class="time-label">3:00 PM - 4:30 PM</div>
+                            <div>Español</div>
+                        </div>
+                        <div class="class-item fisica" onclick="openModal('Física', 'fisica')">
+                            <div class="time-label">5:00 PM - 6:30 PM</div>
+                            <div>Física</div>
+                        </div>
+                        <div class="class-item trigonometria" onclick="openModal('Trigonometría / Geometría', 'trigonometria')">
+                            <div class="time-label">7:00 PM - 8:30 PM</div>
+                            <div>Trigonometría / Geometría</div>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Durante la Semana (Lunes-Viernes) -->
-                <div class="class-slot" style="grid-column: span 5;">
-                    <div class="class-item historia" onclick="openModal('Historia / Inglés', 'historia')">
-                        <div class="time-label">1:00 PM - 2:30 PM</div>
-                        <div>Historia / Inglés</div>
-                    </div>
-                    <div class="class-item quimica" onclick="openModal('Química', 'quimica2')">
-                        <div class="time-label">3:00 PM - 4:30 PM</div>
-                        <div>Química</div>
-                    </div>
-                    <div class="class-item probabilidad" onclick="openModal('Probabilidad / Razonamiento matemático', 'probabilidad')">
-                        <div class="time-label">5:00 PM - 6:30 PM</div>
-                        <div>Probabilidad / Razonamiento matemático</div>
-                    </div>
-                    <div class="class-item calculo" onclick="openModal('Cálculo', 'calculo')">
-                        <div class="time-label">7:00 PM - 8:30 PM</div>
-                        <div>Cálculo</div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Progress Section for Second Period -->
-            <div class="progress-section">
-                <h3>Progreso del Período (16 Ago - 19 Sep)</h3>
-                <div class="progress-grid">
-                    <div class="progress-item espanol-progress">
-                        <h4>Español</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-espanol2" style="width: 0%;"></div>
+                <!-- Progress Section for First Period -->
+                <div class="progress-section">
+                    <h3>Progreso del Período (12 Jul - 15 Ago)</h3>
+                    <div class="progress-grid">
+                        <div class="progress-item quimica-progress">
+                            <h4>Química</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-quimica" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-quimica">0 de 10 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-quimica">0%</span>
+                            </div>
                         </div>
-                        <div class="progress-text">
-                            <span id="progress-text-espanol2">0 de 5 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-espanol2">0%</span>
+                        
+                        <div class="progress-item aritmetica-progress">
+                            <h4>Aritmética/Algebra</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-aritmetica" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-aritmetica">0 de 10 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-aritmetica">0%</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="progress-item fisica-progress">
-                        <h4>Física</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-fisica2" style="width: 0%;"></div>
+                        
+                        <div class="progress-item espanol-progress">
+                            <h4>Español</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-espanol" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-espanol">0 de 25 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-espanol">0%</span>
+                            </div>
                         </div>
-                        <div class="progress-text">
-                            <span id="progress-text-fisica2">0 de 5 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-fisica2">0%</span>
+                        
+                        <div class="progress-item fisica-progress">
+                            <h4>Física</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-fisica" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-fisica">0 de 25 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-fisica">0%</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="progress-item trigonometria-progress">
-                        <h4>Trigonometría / Geometría</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-trigonometria2" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progress-text-trigonometria2">0 de 5 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-trigonometria2">0%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="progress-item biologia-progress">
-                        <h4>Biología</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-biologia" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progress-text-biologia">0 de 5 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-biologia">0%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="progress-item historia-progress">
-                        <h4>Historia / Inglés</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-historia" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progress-text-historia">0 de 25 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-historia">0%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="progress-item quimica-progress">
-                        <h4>Química</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-quimica2" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progress-text-quimica2">0 de 25 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-quimica2">0%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="progress-item probabilidad-progress">
-                        <h4>Probabilidad / Razonamiento matemático</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-probabilidad" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progress-text-probabilidad">0 de 25 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-probabilidad">0%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="progress-item calculo-progress">
-                        <h4>Cálculo</h4>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-fill" id="progress-calculo" style="width: 0%;"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="progress-text-calculo">0 de 25 clases</span>
-                            <span class="progress-percentage" id="progress-percentage-calculo">0%</span>
+                        
+                        <div class="progress-item trigonometria-progress">
+                            <h4>Trigonometría / Geometría</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-trigonometria" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-trigonometria">0 de 25 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-trigonometria">0%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- To-Do List Section -->
-<div class="todo-section">
-    <div class="todo-header">
-        <h2>Lista de Tareas</h2>
-        <div class="todo-stats">
-            <span id="todoStats">0 pendientes, 0 completadas</span>
+        <!-- Contenido del Segundo Período -->
+        <div id="period2" class="tab-content">
+            <div class="period">
+                <div class="period-title">Del 16 de Agosto al 19 de Septiembre</div>
+                <div class="schedule-grid">
+                    <div class="day-header sabado">SÁBADO</div>
+                    <div class="day-header domingo">DOMINGO</div>
+                    <div class="day-header lunes">LUNES</div>
+                    <div class="day-header martes">MARTES</div>
+                    <div class="day-header miercoles">MIÉRCOLES</div>
+                    <div class="day-header jueves">JUEVES</div>
+                    <div class="day-header viernes">VIERNES</div>
+
+                    <!-- Fin de Semana (Solo Sábados) -->
+                    <div class="class-slot" style="grid-column: span 2;">
+                        <div class="class-item espanol" onclick="openModal('Español', 'espanol2')">
+                            <div class="time-label">9:00 AM - 11:30 AM</div>
+                            <div>Español</div>
+                        </div>
+                        <div class="class-item fisica" onclick="openModal('Física', 'fisica2')">
+                            <div class="time-label">12:00 PM - 2:30 PM</div>
+                            <div>Física</div>
+                        </div>
+                        <div class="class-item trigonometria" onclick="openModal('Trigonometría / Geometría', 'trigonometria2')">
+                            <div class="time-label">3:30 PM - 6:00 PM</div>
+                            <div>Trigonometría / Geometría</div>
+                        </div>
+                        <div class="class-item biologia" onclick="openModal('Biología', 'biologia')">
+                            <div class="time-label">6:30 PM - 9:00 PM</div>
+                            <div>Biología</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Durante la Semana (Lunes-Viernes) -->
+                    <div class="class-slot" style="grid-column: span 5;">
+                        <div class="class-item historia" onclick="openModal('Historia / Inglés', 'historia')">
+                            <div class="time-label">1:00 PM - 2:30 PM</div>
+                            <div>Historia / Inglés</div>
+                        </div>
+                        <div class="class-item quimica" onclick="openModal('Química', 'quimica2')">
+                            <div class="time-label">3:00 PM - 4:30 PM</div>
+                            <div>Química</div>
+                        </div>
+                        <div class="class-item probabilidad" onclick="openModal('Probabilidad / Razonamiento matemático', 'probabilidad')">
+                            <div class="time-label">5:00 PM - 6:30 PM</div>
+                            <div>Probabilidad / Razonamiento matemático</div>
+                        </div>
+                        <div class="class-item calculo" onclick="openModal('Cálculo', 'calculo')">
+                            <div class="time-label">7:00 PM - 8:30 PM</div>
+                            <div>Cálculo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Section for Second Period -->
+                <div class="progress-section">
+                    <h3>Progreso del Período (16 Ago - 19 Sep)</h3>
+                    <div class="progress-grid">
+                        <div class="progress-item espanol-progress">
+                            <h4>Español</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-espanol2" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-espanol2">0 de 5 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-espanol2">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item fisica-progress">
+                            <h4>Física</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-fisica2" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-fisica2">0 de 5 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-fisica2">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item trigonometria-progress">
+                            <h4>Trigonometría / Geometría</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-trigonometria2" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-trigonometria2">0 de 5 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-trigonometria2">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item biologia-progress">
+                            <h4>Biología</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-biologia" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-biologia">0 de 5 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-biologia">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item historia-progress">
+                            <h4>Historia / Inglés</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-historia" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-historia">0 de 25 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-historia">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item quimica-progress">
+                            <h4>Química</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-quimica2" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-quimica2">0 de 25 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-quimica2">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item probabilidad-progress">
+                            <h4>Probabilidad / Razonamiento matemático</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-probabilidad" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-probabilidad">0 de 25 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-probabilidad">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item calculo-progress">
+                            <h4>Cálculo</h4>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="progress-calculo" style="width: 0%;"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span id="progress-text-calculo">0 de 25 clases</span>
+                                <span class="progress-percentage" id="progress-percentage-calculo">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- To-Do List Section -->
+        <div class="todo-section">
+            <div class="todo-header">
+                <h2>Lista de Tareas</h2>
+                <div class="todo-stats">
+                    <span id="todoStats">0 pendientes, 0 completadas</span>
+                </div>
+            </div>
+            
+            <div class="todo-input-section">
+                <div class="input-group">
+                    <input type="text" id="todoInput" placeholder="Agregar nueva tarea..." maxlength="100">
+                    <select id="todoPriority">
+                        <option value="low">Baja</option>
+                        <option value="medium" selected>Media</option>
+                        <option value="high">Alta</option>
+                    </select>
+                    <button id="addTodoBtn" onclick="addTodo()">
+                        <span>+</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="todo-filters">
+                <button class="filter-btn active" onclick="filterTodos('all')">Todas</button>
+                <button class="filter-btn" onclick="filterTodos('pending')">Pendientes</button>
+                <button class="filter-btn" onclick="filterTodos('completed')">Completadas</button>
+                <button class="filter-btn" onclick="filterTodos('high')">Alta Prioridad</button>
+            </div>
+
+            <div class="todo-list-container">
+                <ul id="todoList" class="todo-list"></ul>
+                <div id="emptyState" class="empty-state">
+                    <div class="empty-icon">📝</div>
+                    <p>No hay tareas. ¡Agrega una para empezar!</p>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <div class="todo-input-section">
-        <div class="input-group">
-            <input type="text" id="todoInput" placeholder="Agregar nueva tarea..." maxlength="100">
-            <select id="todoPriority">
-                <option value="low">Baja</option>
-                <option value="medium" selected>Media</option>
-                <option value="high">Alta</option>
-            </select>
-            <button id="addTodoBtn" onclick="addTodo()">
-                <span>+</span>
-            </button>
-        </div>
-    </div>
-
-    <div class="todo-filters">
-        <button class="filter-btn active" onclick="filterTodos('all')">Todas</button>
-        <button class="filter-btn" onclick="filterTodos('pending')">Pendientes</button>
-        <button class="filter-btn" onclick="filterTodos('completed')">Completadas</button>
-        <button class="filter-btn" onclick="filterTodos('high')">Alta Prioridad</button>
-    </div>
-
-    <div class="todo-list-container">
-        <ul id="todoList" class="todo-list"></ul>
-        <div id="emptyState" class="empty-state">
-            <div class="empty-icon">📝</div>
-            <p>No hay tareas. ¡Agrega una para empezar!</p>
-        </div>
-    </div>
-</div>
-</div>
 
     <!-- Modal -->
     <div id="classModal" class="modal">
@@ -328,6 +338,22 @@
         </div>
     </div>
 
+    <script>
+        // Función para cambiar pestañas
+        function switchTab(tabId, buttonElement) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            buttonElement.classList.add('active');
+        }
+    </script>
     <script src="script.js"></script>
 
 </body>
