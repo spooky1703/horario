@@ -1,4 +1,5 @@
         const classData = {
+            // Primer período (5 semanas)
             'quimica': { total: 10, color: '#3f51b5', colorDark: '#303f9f' }, // Sáb-Dom = 2 días x 5 semanas
             'aritmetica': { total: 10, color: '#2196f3', colorDark: '#1976d2' }, // Sáb-Dom = 2 días x 5 semanas
             'espanol': { total: 25, color: '#f44336', colorDark: '#d32f2f' }, // Lun-Vie = 5 días x 5 semanas
@@ -27,6 +28,7 @@
             localStorage.setItem('classProgress', JSON.stringify(progress));
         }
 
+        // Actualizar todas las barras de progreso
         function updateAllProgressBars() {
             const progress = loadProgress();
             
@@ -51,6 +53,7 @@
             });
         }
 
+        // Abrir modal
         function openModal(title, classKey) {
             const modal = document.getElementById('classModal');
             const modalTitle = document.getElementById('modalTitle');
@@ -58,11 +61,13 @@
             
             modalTitle.textContent = title;
             
+            // Establecer colores del modal
             const header = document.querySelector('.modal-header');
             const root = document.documentElement;
             root.style.setProperty('--modal-color', classData[classKey].color);
             root.style.setProperty('--modal-color-dark', classData[classKey].colorDark);
             
+            // Generar lista de clases
             classList.innerHTML = '';
             const progress = loadProgress();
             const classProgress = progress[classKey] || [];
@@ -89,10 +94,12 @@
             modal.style.display = 'block';
         }
 
+        // Cerrar modal
         function closeModal() {
             document.getElementById('classModal').style.display = 'none';
         }
 
+        // Alternar clase completada
         function toggleClass(classKey, classNumber, checkbox) {
             const progress = loadProgress();
             if (!progress[classKey]) {
@@ -114,6 +121,7 @@
             updateAllProgressBars(); // Actualizar todas las barras de progreso
         }
 
+        // Actualizar barra de progreso del modal
         function updateProgress(classKey) {
             const progress = loadProgress();
             const completed = progress[classKey] ? progress[classKey].length : 0;
@@ -124,6 +132,7 @@
             document.getElementById('progressText').textContent = `${completed} de ${total} clases completadas (${Math.round(percentage)}%)`;
         }
 
+        // Cerrar modal al hacer clic fuera
         window.onclick = function(event) {
             const modal = document.getElementById('classModal');
             if (event.target == modal) {
@@ -131,12 +140,14 @@
             }
         }
 
+        // Cerrar modal con ESC
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal();
             }
         });
 
+        // Inicializar las barras de progreso al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
             updateAllProgressBars();
         });
@@ -147,12 +158,13 @@ document.addEventListener('DOMContentLoaded', function() {
     updateTodoStats();
 });
 
-// TO-DO 
+// TO-DO LIST FUNCTIONALITY
 
 let todos = [];
 let currentFilter = 'all';
 let todoIdCounter = 1;
 
+// Cargar todos desde localStorage
 function loadTodos() {
     const saved = localStorage.getItem('todos');
     if (saved) {
@@ -163,10 +175,12 @@ function loadTodos() {
     renderTodos();
 }
 
+// Guardar todos en localStorage
 function saveTodos() {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
+// Agregar nuevo todo
 function addTodo() {
     const input = document.getElementById('todoInput');
     const priority = document.getElementById('todoPriority');
@@ -194,6 +208,7 @@ function addTodo() {
     updateTodoStats();
 }
 
+// Alternar estado completado
 function toggleTodo(id) {
     const todo = todos.find(t => t.id === id);
     if (todo) {
@@ -204,6 +219,7 @@ function toggleTodo(id) {
     }
 }
 
+// Eliminar todo
 function deleteTodo(id) {
     const todoElement = document.querySelector(`[data-todo-id="${id}"]`);
     if (todoElement) {
@@ -217,9 +233,11 @@ function deleteTodo(id) {
     }
 }
 
+// Filtrar todos
 function filterTodos(filter) {
     currentFilter = filter;
     
+    // Actualizar botones de filtro
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
@@ -228,12 +246,14 @@ function filterTodos(filter) {
     renderTodos();
 }
 
+// Renderizar todos
 function renderTodos() {
     const todoList = document.getElementById('todoList');
     const emptyState = document.getElementById('emptyState');
     
     let filteredTodos = todos;
     
+    // Aplicar filtros
     switch (currentFilter) {
         case 'pending':
             filteredTodos = todos.filter(t => !t.completed);
@@ -291,12 +311,14 @@ function renderTodos() {
     }).join('');
 }
 
+// Actualizar estadísticas
 function updateTodoStats() {
     const pending = todos.filter(t => !t.completed).length;
     const completed = todos.filter(t => t.completed).length;
     document.getElementById('todoStats').textContent = `${pending} pendientes, ${completed} completadas`;
 }
 
+// Escapar HTML para prevenir XSS
 function escapeHtml(text) {
     const map = {
         '&': '&amp;',
@@ -308,6 +330,7 @@ function escapeHtml(text) {
     return text.replace(/[&<>"']/g, m => map[m]);
 }
 
+// Permitir agregar con Enter
 document.addEventListener('DOMContentLoaded', function() {
     const todoInput = document.getElementById('todoInput');
     if (todoInput) {
@@ -318,3 +341,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+function switchTab(tabId, buttonElement) {
+    // Ocultar todos los contenidos
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    // Remover active de botones
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.classList.remove('active');
+    });
+    
+    // Mostrar contenido y activar botón seleccionado
+    document.getElementById(tabId).classList.add('active');
+    buttonElement.classList.add('active');
+}
