@@ -19,7 +19,7 @@
                        @its.al0oo
                     </a>
                 </div>
-
+</div>      
         <!-- Sistema de Pestañas -->
         <div class="tabs-container">
             <div class="tabs">
@@ -345,15 +345,19 @@
     </div>
 
     <script>
+        // Función para cambiar pestañas
         function switchTab(tabId, buttonElement) {
+            // Ocultar todos los contenidos de pestañas
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
             
+            // Remover clase active de todos los botones
             document.querySelectorAll('.tab-button').forEach(button => {
                 button.classList.remove('active');
             });
             
+            // Mostrar el contenido seleccionado
             document.getElementById(tabId).classList.add('active');
             
             // Activar el botón seleccionado
